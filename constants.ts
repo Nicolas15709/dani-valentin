@@ -74,7 +74,7 @@ export const PERSONALIZED_REASONS = [
 
 export const PHOTO_GALLERY = [
   {
-    src: "DANI Y YO.jpeg",
+    src: "/dani-y-yo.jpeg",
     caption: "Nosotros ❤️"
   }
   // Add more photos here as needed
@@ -88,6 +88,6 @@ export const IMAGES = {
 
 export const MUSIC_CONFIG = {
  
-  backgroundMusic: "Los Auténticos Decadentes - Loco (Tu Forma De Ser) (Letra).mp3",
+  backgroundMusic: "/musica.mp3",
   volume: 0.5 // 50% volume by default
 };

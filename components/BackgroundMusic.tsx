@@ -11,38 +11,59 @@ const BackgroundMusic: React.FC = () => {
     const audio = audioRef.current;
     if (!audio) return;
 
-    // Try to autoplay (may be blocked by browser policy)
+    // Set initial volume
+    audio.volume = MUSIC_CONFIG.volume;
+
+    const startAudio = () => {
+      if (!audio) return;
+      audio.play()
+        .then(() => {
+          setIsPlaying(true);
+          // Remove listener once started
+          window.removeEventListener('click', startAudio);
+          window.removeEventListener('touchstart', startAudio);
+        })
+        .catch((error) => {
+          console.log('Playback failed:', error);
+        });
+    };
+
+    // Try to autoplay immediately
     const playPromise = audio.play();
-    
     if (playPromise !== undefined) {
       playPromise
         .then(() => {
           setIsPlaying(true);
         })
-        .catch((error) => {
-          console.log('Autoplay prevented:', error);
-          // User will need to click to start music
+        .catch(() => {
+          // Autoplay was prevented, wait for first interaction
+          window.addEventListener('click', startAudio);
+          window.addEventListener('touchstart', startAudio);
         });
     }
 
     return () => {
       audio.pause();
+      window.removeEventListener('click', startAudio);
+      window.removeEventListener('touchstart', startAudio);
     };
   }, []);
 
-  const toggleMute = () => {
+  const toggleMute = (e: React.MouseEvent) => {
+    e.stopPropagation(); // Prevent the global click listener if it's still active
     const audio = audioRef.current;
     if (!audio) return;
 
     if (isMuted) {
       audio.volume = MUSIC_CONFIG.volume;
+      setIsMuted(false);
       if (!isPlaying) {
         audio.play().then(() => setIsPlaying(true));
       }
     } else {
       audio.volume = 0;
+      setIsMuted(true);
     }
-    setIsMuted(!isMuted);
   };
 
   return (

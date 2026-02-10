@@ -89,14 +89,7 @@ const SuccessScreen: React.FC = () => {
         "A mi me vuelve loco tu forma de ser" 🎵
       </p>
 
-      {/* Screenshot Button */}
-      <button
-        onClick={captureScreenshot}
-        className="mb-8 bg-purple-500 hover:bg-purple-600 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
-      >
-        <Camera className="w-5 h-5" />
-        Capturar este momento
-      </button>
+    
 
       {/* Countdown Timer */}
       <CountdownTimer />
