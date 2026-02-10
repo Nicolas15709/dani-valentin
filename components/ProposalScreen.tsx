@@ -61,8 +61,11 @@ const ProposalScreen: React.FC<ProposalScreenProps> = ({ onAccept }) => {
       </div>
 
       {/* Text Section */}
-      <h1 className="text-4xl md:text-6xl font-romantic text-pink-600 mb-4 drop-shadow-sm animate-fade-in">
-        {TARGET_NAME}
+      <h1 className="text-4xl md:text-6xl font-romantic text-pink-600 mb-4 drop-shadow-sm animate-fade-in relative">
+        <span className="relative inline-block">
+          {TARGET_NAME}
+          <span className="absolute inset-0 animate-shimmer bg-gradient-to-r from-transparent via-white/60 to-transparent"></span>
+        </span>
       </h1>
       <p className="text-xl md:text-2xl text-gray-700 font-bold mb-8 max-w-lg animate-fade-in">
         ¿Quieres ser mi San Valentín? 🌹
@@ -134,12 +137,25 @@ const ProposalScreen: React.FC<ProposalScreenProps> = ({ onAccept }) => {
           }
         }
 
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%);
+          }
+          100% {
+            transform: translateX(100%);
+          }
+        }
+
         .animate-fade-in {
           animation: fade-in 1s ease-out;
         }
 
         .animate-pulse-slow {
           animation: pulse-slow 2s ease-in-out infinite;
+        }
+
+        .animate-shimmer {
+          animation: shimmer 3s ease-in-out infinite;
         }
       `}</style>
     </div>

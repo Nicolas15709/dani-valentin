@@ -3,6 +3,7 @@ import { DATE_DETAILS, TARGET_NAME, IMAGES } from '../constants';
 import confetti from 'canvas-confetti';
 import { Calendar, MapPin, Clock, Camera } from 'lucide-react';
 import CountdownTimer from './CountdownTimer';
+import LoveLetter from './LoveLetter';
 
 const SuccessScreen: React.FC = () => {
   useEffect(() => {
@@ -82,7 +83,7 @@ const SuccessScreen: React.FC = () => {
       </h1>
       
       <p className="text-2xl text-pink-700 font-bold mb-4 animate-fade-in">
-        Te amo, Mi flaca 
+        Te amo, Mi Gordita  
       </p>
 
       <p className="text-lg text-gray-600 mb-8 max-w-md italic animate-fade-in">
@@ -131,6 +132,9 @@ const SuccessScreen: React.FC = () => {
           </div>
         </div>
       </div>
+
+      {/* Love Letter */}
+      <LoveLetter />
 
       <style>{`
         @keyframes scale-in {
