@@ -74,7 +74,7 @@ export const PERSONALIZED_REASONS = [
 
 export const PHOTO_GALLERY = [
   {
-    src: "/dani-y-yo.jpeg",
+      src: "/images/daniella.jpeg",
     caption: "Nosotros ❤️"
   }
   // Add more photos here as needed
